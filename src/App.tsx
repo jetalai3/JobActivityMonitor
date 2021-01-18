@@ -1,4 +1,5 @@
-import * as React from "react";
-import * as styles from "./App.module.css";
+import * as React from 'react';
+import styles from './App.module.css';
 
-export const App = () => <div className={styles.hello}>Test component</div>;
+const App = () => <div className={styles.hello}>Test component</div>;
+export default App;

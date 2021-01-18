@@ -1,5 +1,4 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -13,7 +12,7 @@ module.exports = {
   },
   devServer: {
     port: 9000,
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "src"),
   },
   module: {
     rules: [
@@ -24,15 +23,12 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true
+              modules: {
+                localIdentName: "[path]__[name]__[local]",
+              },
             }
           }
         ]
-      },
-      {
-        test: /\.js/,
-        loader: "babel-loader",
-        include: __dirname + "/src",
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,

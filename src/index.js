@@ -1,10 +1,11 @@
-import './style.css';
+import './App.module.css';
 import Icon from './icon.png';
 
 function component() {
-  const element = document.createElement("div");
+  // eslint-disable-next-line no-undef
+  const element = document.createElement('div');
 
-  element.innerHTML = "Test";
+  element.innerHTML = 'Test';
   element.classList.add('hello');
 
   const myIcon = new Image();
