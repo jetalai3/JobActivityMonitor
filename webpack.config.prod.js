@@ -28,7 +28,7 @@ const config = merge([common, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Home Player",
+      title: "Job Activity Monitor",
     }),
     new MiniCssExtractPlugin(),
   ],
