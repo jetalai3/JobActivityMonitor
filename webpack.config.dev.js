@@ -27,6 +27,5 @@ const config = merge([common, {
         ],
     },
 }])
-console.log(JSON.stringify(config));
 
 module.exports = config;
