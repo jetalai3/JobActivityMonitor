@@ -1,28 +1,21 @@
-const path = require("path");
+const { merge } = require('webpack-merge');
+const common = require('./webpack.config.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
+const config = merge([common, {
   mode: "production",
-  entry: "./src/index.tsx",
-  devtool: "inline-source-map",
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
-  devServer: {
-    port: 9000,
-    contentBase: path.join(__dirname, "src"),
-  },
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: './'
+            }
+          },
           {
             loader: "css-loader",
             options: {
@@ -30,11 +23,6 @@ module.exports = {
             },
           },
         ],
-      },
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
       },
     ],
   },
@@ -44,4 +32,6 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
   ],
-};
+}]);
+
+module.exports = config;
